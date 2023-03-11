@@ -16,5 +16,10 @@ export function UserProtectedRoute({ isLoggedInfo, children }: Props) {
   if (!isLoggedInfo) {
     return <Navigate to="/" replace />;
   }
-  return <Navbar isLoggedInfo={isLoggedInfo}>{children}</Navbar>;
+
+  return (
+    <Navbar isLoggedInfo={isLoggedInfo}>
+      {React.cloneElement(children, { isLoggedInfo })}
+    </Navbar>
+  );
 }

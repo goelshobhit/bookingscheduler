@@ -32,6 +32,8 @@ export const Navbar = memo(({ isLoggedInfo, children }: Props) => {
   }, [location]);
   // Upto here
 
+  console.log(isLoggedInfo);
+
   return (
     <Div>
       <NavStyle />
@@ -42,6 +44,7 @@ export const Navbar = memo(({ isLoggedInfo, children }: Props) => {
               <h3 className="brand-font">Intuit Scheduler</h3>
             </div>
             <div className="navbar-menu">
+              Hi {isLoggedInfo?.firstName}!
               <div className="leftMenu">
                 <LeftMenu mode={'horizontal'} />
               </div>
@@ -51,7 +54,6 @@ export const Navbar = memo(({ isLoggedInfo, children }: Props) => {
               <div className="rightMenu">
                 <RightMenu mode={'horizontal'} isLoggedInfo={isLoggedInfo} />
               </div>
-
               <Drawer
                 title={'Brand Here'}
                 placement="right"

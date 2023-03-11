@@ -1,6 +1,7 @@
 import { DashboardState } from 'app/pages/Dashboard/types';
 import { LoginState } from 'app/pages/Login/types';
 import { ExpertDashboardState } from 'app/pages/ExpertDashboard/types';
+import { UserDashboardState } from 'app/pages/UserDashboard/types';
 // [IMPORT NEW CONTAINERSTATE ABOVE] < Needed for generating containers seamlessly
 
 /*
@@ -11,5 +12,6 @@ export interface RootState {
   dashboard?: DashboardState;
   login?: LoginState;
   expertDashboard?: ExpertDashboardState;
+  userDashboard?: UserDashboardState;
   // [INSERT NEW REDUCER KEY ABOVE] < Needed for generating containers seamlessly
 }
