@@ -12,12 +12,21 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import { GlobalStyle } from 'styles/global-styles';
 
-import { HomePage } from './pages/HomePage/Loadable';
-import { NotFoundPage } from './components/NotFoundPage/Loadable';
+import { Login } from 'app/components/Login/Loadable';
+import { UserDashboard } from 'app/components/UserDashboard/Loadable';
+import { UserProtectedRoute } from 'app/components/UserProtectedRoute';
+import { ExpertProtectedRoute } from 'app/components/ExpertProtectedRoute';
+import { LogInRoute } from 'app/components/LogInRoute';
+import { ExpertDashboard } from 'app/components/ExpertDashboard/Loadable';
+
+import { getItem } from 'utils/storage';
+import { NotFoundPage } from 'app/components/NotFoundPage/Loadable';
 import { useTranslation } from 'react-i18next';
 
 export function App() {
   const { i18n } = useTranslation();
+  const loggedInfo =
+    getItem('mybooks/userInfo') && JSON.parse(getItem('mybooks/userInfo'));
   return (
     <BrowserRouter>
       <Helmet
@@ -29,7 +38,30 @@ export function App() {
       </Helmet>
 
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route
+          path="/"
+          element={
+            <LogInRoute isLoggedInfo={loggedInfo}>
+              <Login />
+            </LogInRoute>
+          }
+        />
+        <Route
+          path="/user-dashboard"
+          element={
+            <UserProtectedRoute isLoggedInfo={loggedInfo}>
+              <UserDashboard />
+            </UserProtectedRoute>
+          }
+        />
+        <Route
+          path="/expert-dashboard"
+          element={
+            <ExpertProtectedRoute isLoggedInfo={loggedInfo}>
+              <ExpertDashboard />
+            </ExpertProtectedRoute>
+          }
+        />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <GlobalStyle />

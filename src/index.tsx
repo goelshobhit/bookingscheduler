@@ -11,9 +11,11 @@ import 'react-app-polyfill/stable';
 import * as React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
+import { ConfigProvider } from 'antd';
 
 // Use consistent styling
 import 'sanitize.css/sanitize.css';
+import 'antd/dist/reset.css';
 
 // Import root app
 import { App } from 'app';
@@ -36,7 +38,15 @@ root.render(
   <Provider store={store}>
     <HelmetProvider>
       <React.StrictMode>
-        <App />
+        <ConfigProvider
+          theme={{
+            token: {
+              colorPrimary: '#00b96b',
+            },
+          }}
+        >
+          <App />
+        </ConfigProvider>
       </React.StrictMode>
     </HelmetProvider>
   </Provider>,

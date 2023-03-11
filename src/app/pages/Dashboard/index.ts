@@ -1,24 +1,24 @@
 import { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from 'utils/@reduxjs/toolkit';
 import { useInjectReducer, useInjectSaga } from 'utils/redux-injectors';
-import { homePageSaga } from './saga';
-import { HomePageState } from './types';
+import { dashboardSaga } from './saga';
+import { DashboardState } from './types';
 
-export const initialState: HomePageState = {};
+export const initialState: DashboardState = {};
 
 const slice = createSlice({
-  name: 'homePage',
+  name: 'dashboard',
   initialState,
   reducers: {
     someAction(state, action: PayloadAction<any>) {},
   },
 });
 
-export const { actions: homePageActions } = slice;
+export const { actions: dashboardActions } = slice;
 
-export const useHomePageSlice = () => {
+export const useDashboardSlice = () => {
   useInjectReducer({ key: slice.name, reducer: slice.reducer });
-  useInjectSaga({ key: slice.name, saga: homePageSaga });
+  useInjectSaga({ key: slice.name, saga: dashboardSaga });
   return { actions: slice.actions };
 };
 
@@ -26,7 +26,7 @@ export const useHomePageSlice = () => {
  * Example Usage:
  *
  * export function MyComponentNeedingThisSlice() {
- *  const { actions } = useHomePageSlice();
+ *  const { actions } = useDashboardSlice();
  *
  *  const onButtonClick = (evt) => {
  *    dispatch(actions.someAction());
