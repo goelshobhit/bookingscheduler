@@ -3,7 +3,7 @@ import axios from 'axios';
 import _ from 'lodash';
 
 export const axiosInstance = axios.create({
-  baseURL: 'http://localhost:3000/', //eslint-disable-line
+  baseURL: 'https://mybooks-dqru.onrender.com/', //eslint-disable-line
   responseType: 'json',
 });
 
