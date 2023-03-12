@@ -20,7 +20,6 @@ export const ExpertDashboard = memo(({ isLoggedInfo }: Props) => {
   const { actions } = useExpertDashboardSlice();
 
   const { data } = useSelector(selectExpertDashboard);
-  console.log(data);
 
   useEffect(() => {
     dispatch(actions.getExpertData(isLoggedInfo?._id));
@@ -43,8 +42,8 @@ export const ExpertDashboard = memo(({ isLoggedInfo }: Props) => {
                   }
                   title={
                     <a href="https://ant.design">
-                      {get(item, 'firstName')} has following jobs. pls click on
-                      it
+                      {get(item, 'firstName')} - {get(item, 'email')} - has
+                      following jobs. pls click on it
                     </a>
                   }
                   description={map(get(item, 'jobs'), itemData => (
