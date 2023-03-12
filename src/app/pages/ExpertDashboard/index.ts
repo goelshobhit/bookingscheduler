@@ -4,13 +4,22 @@ import { useInjectReducer, useInjectSaga } from 'utils/redux-injectors';
 import { expertDashboardSaga } from './saga';
 import { ExpertDashboardState } from './types';
 
-export const initialState: ExpertDashboardState = {};
+export const initialState: ExpertDashboardState = {
+  params: '',
+  data: [],
+};
 
 const slice = createSlice({
   name: 'expertDashboard',
   initialState,
   reducers: {
-    someAction(state, action: PayloadAction<any>) {},
+    getExpertData(state, action: PayloadAction<any>) {
+      state.params = action.payload;
+    },
+    getExpertDataSuccess(state, action: PayloadAction<any>) {
+      state.params = '';
+      state.data = action.payload;
+    },
   },
 });
 

@@ -32,8 +32,6 @@ export const Navbar = memo(({ isLoggedInfo, children }: Props) => {
   }, [location]);
   // Upto here
 
-  console.log(isLoggedInfo);
-
   return (
     <Div>
       <NavStyle />

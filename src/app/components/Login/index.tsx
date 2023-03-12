@@ -4,6 +4,7 @@
  *
  */
 import React, { memo } from 'react';
+import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { Alert, Button } from 'antd';
@@ -75,7 +76,10 @@ export const Login = memo((props: Props) => {
               <div className="line"></div>
             </div>
             <p className="pp">
-              Dont have an account don't worry. Let get connect 😊
+              Dont have an account don't worry. <br />
+              <Link to="/sign-up" style={{ color: '#fff' }}>
+                Sign Up
+              </Link>
             </p>
           </div>
         </div>

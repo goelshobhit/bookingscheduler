@@ -8,6 +8,7 @@ export const initialState: UserDashboardState = {
   isLoading: false,
   params: '',
   data: '',
+  createJobData: '',
 };
 
 const slice = createSlice({
@@ -24,6 +25,12 @@ const slice = createSlice({
     },
     getUserInfoError(state, action: PayloadAction<any>) {
       state.isLoading = false;
+    },
+    createJob(state, action: PayloadAction<any>) {
+      state.createJobData = action.payload;
+    },
+    createJobSuccess(state) {
+      state.createJobData = '';
     },
   },
 });

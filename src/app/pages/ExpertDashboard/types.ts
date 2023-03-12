@@ -1,2 +1,5 @@
 /* --- STATE --- */
-export interface ExpertDashboardState {}
+export interface ExpertDashboardState {
+  params: any;
+  data: any;
+}

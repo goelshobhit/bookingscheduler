@@ -22,6 +22,7 @@ import { ExpertDashboard } from 'app/components/ExpertDashboard/Loadable';
 import { getItem } from 'utils/storage';
 import { NotFoundPage } from 'app/components/NotFoundPage/Loadable';
 import { useTranslation } from 'react-i18next';
+import { SignUp } from './components/SignUp';
 
 export function App() {
   const { i18n } = useTranslation();
@@ -58,10 +59,11 @@ export function App() {
           path="/expert-dashboard"
           element={
             <ExpertProtectedRoute isLoggedInfo={loggedInfo}>
-              <ExpertDashboard />
+              <ExpertDashboard isLoggedInfo={loggedInfo} />
             </ExpertProtectedRoute>
           }
         />
+        <Route path="/sign-up" element={<SignUp />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <GlobalStyle />
